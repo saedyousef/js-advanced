@@ -34,22 +34,11 @@ function load() {
     request.send(data);
 
 }
-
+const post_template = Handlebars.compile(document.querySelector('#post').innerHTML);
 function add_post(contents) {
     // Create new post
-    const post = document.createElement('div');
-    post.className = 'post';
-    post.innerHTML = contents;
+    const post = post_template({'contetns' : contents})
 
-    // Add button to hide posts.
-    const hide = document.createElement('button');
-    hide.className = 'hide';
-    hide.innerHTML = 'Hide';
-    post.append(hide);
-
-    hide.onclick = function() {
-        this.parentElement.remove();
-    }
     // Add post to DOM.
-    document.querySelector('#posts').append(post);
+    document.querySelector('#posts').innerHTML += post;
 }
