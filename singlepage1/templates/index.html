@@ -15,6 +15,12 @@
                 });
             });
 
+            window.onpopstate = e => {
+                const data = e.state;
+                document.title = data.title;
+                document.querySelector("#body").innerHTML = data.text;
+            }
+
             function load_page(name)
             {
                 const request = new XMLHttpRequest();
@@ -25,7 +31,7 @@
 
                     // Push state to URL
                     document.title = name;
-                    history.pushState(null, name, name);
+                    history.pushState({'title' : name, 'text' : response}, name, name);
                 }
                 request.send();
             }
