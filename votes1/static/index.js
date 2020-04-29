@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () =>
 
     socket.on('votes total', function(data)
     {
-        console.log(data.yes, data.no, data.maybe)
+        // Getting this error: Uncaught TypeError: Cannot set property 'innerHTML' of null
         document.querySelector("#yes").innerHTML = data.yes;
         document.querySelector("#no").innerHTML = data.no;
         document.querySelector("#maybe").innerHTML = data.maybe;
