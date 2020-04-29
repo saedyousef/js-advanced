@@ -5,7 +5,7 @@
         <script id="post" type="text/x-handlebars-template">
             <div class="post">
                 {% raw -%}
-                {{contents}}
+                    {{contents}}
                 {%- endraw %}
                 <button class="hide">Hide</button>
             </div>
@@ -13,15 +13,27 @@
         <script src="{{ url_for('static', filename='index.js') }}"></script>
     
         <style>
+
+            @keyframes hide {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
             .hide {
                 float: right;
             }
             .post {
+                margin-bottom: 10px;
                 padding: 20px;
                 text-align: center;
                 background-color: chartreuse;
-                height: 40px;
-                margin: 10px;
+                animation-name: hide;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+                animation-play-state: paused;
             }
         </style>
     </head>

@@ -11,6 +11,17 @@ window.onscroll = () => {
         load();
 }
 
+document.addEventListener('click', event => {
+    const element = event.target;
+    if(element.className === 'hide')
+    {
+        element.parentElement.style.animationPlayState = 'running';
+        element.parentElement.addEventListener('animationend', () => {
+            element.parentElement.remove();
+        });
+    }
+});
+
 // Load next set of posts
 function load() {
     // Set start and end post
@@ -32,19 +43,14 @@ function load() {
     data.append('end', end);
 
     request.send(data);
-
 }
+
 const post_template = Handlebars.compile(document.querySelector('#post').innerHTML);
 function add_post(contents) {
     // Create new post
+    console.log(post_template);
     const post = post_template({'contents' : contents})
-
+    
     // Add post to DOM.
     document.querySelector('#posts').innerHTML += post;
 }
-
-document.addEventListener('click', event => {
-    const element = event.target;
-    if(element.className === 'hide')
-        element.parentElement.remove();
-});
