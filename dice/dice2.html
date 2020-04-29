@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+        <script id="result" type="text/x-handlebars-template">
+            <li>
+                You rolled :
+                {{#each values}}
+                    <p alt="{{this}}">{{this}}</p>
+                {{/each}}
+                (Total : {{total}})
+            </li>
+        </script>
+        <script>
+            const source = document.querySelector('#result').innerHTML;
+            const template = Handlebars.compile(source);
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('#roll').onclick = () => {
+
+                    const counter = parseInt(document.querySelector('#counter').value);
+                    const rolls = [];
+                    let total = 0;
+                    for(let i = 0; i < counter; i++)
+                    {
+                        const value = Math.floor((Math.random() * 6)) + 1;
+                        rolls.push(value);
+                        total += value;
+                    }
+                    const content = template({'values' : rolls, 'total' : total});
+                    document.querySelector('#rolls').innerHTML += content;
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <input type="number" id="counter" placeholder="Number of Rolls" min="1" value="1">
+        <button  id="roll">Roll</button>
+            <ul id="rolls">
+            </ul>
+    </body>
+</html>
