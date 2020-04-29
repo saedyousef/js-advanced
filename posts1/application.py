@@ -18,5 +18,5 @@ def posts():
     for i in range(start, end +1):
         data.append(f"Post #{i}")
 
-    time.sleep(0.5);
+    time.sleep(0.5)
     return jsonify(data)
