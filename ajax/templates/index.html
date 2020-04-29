@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+        <title>Ajax</title>
+    </head>
+    <body>
+        <h1> Book flight</h1>
+        <form id="ajax-form">
+            <input type="text" id="param" autofocus autocomplete="off" placeholder="Param">
+            <input type="submit">
+        </form>
+        <div id="result"></div>
+    </body>
+</html>
