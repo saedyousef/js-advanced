@@ -53,4 +53,3 @@ function add_post(contents) {
     // Add post to DOM.
     document.querySelector('#posts').append(post);
 }
-
