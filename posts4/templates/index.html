@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+        <script id="post" type="text/x-handlebars-template">
+            <div class="post">
+                {% raw -%}
+                    {{contents}}
+                {%- endraw %}
+                <button class="hide">Hide</button>
+            </div>
+        </script>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+    
+        <style>
+
+            @keyframes hide {
+                0% {
+                    opacity: 1;
+                    height: 100%;
+                    line-height: 100%;
+                    padding: 20px;
+                    margin-bottom: 10px;
+                }
+                75% {
+                    opacity: 0;
+                    height: 100%;
+                    line-height: 100%;
+                    padding: 20px;
+                    margin-bottom: 10px;
+                }
+                100% {
+                    opacity: 0;
+                    height: 0px;
+                    line-height: 0px;
+                    padding: 0px;
+                    margin-bottom: 0px;
+                }
+            }
+            .hide {
+                float: right;
+            }
+            .post {
+                margin-bottom: 10px;
+                padding: 20px;
+                text-align: center;
+                background-color: chartreuse;
+                animation-name: hide;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+                animation-play-state: paused;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="posts">
+
+        </div>
+    </body>
+</html>
