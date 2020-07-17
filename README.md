@@ -1,1 +1,1 @@
-# cs50-js
+# js-advanced
